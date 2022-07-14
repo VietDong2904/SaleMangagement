@@ -1,0 +1,38 @@
+<div class="h-100  border-right bg-white d-flex flex-column" id="side-menu">
+    <ul class=" pt-0 justify-content-center w-100 bg-white  list-unstyled m-0" >
+        <li class="mb-3">
+            <p-button
+                type="button"
+                class="p-button-dark w-100 text-center text-white  p-button-sm  p-2 font-weight-bold"
+                label="Danh mục "
+                icon="pi pi-align-justify"
+            ></p-button>
+        </li>
+        <li class="mr-4 pl-3" *ngFor="let navItem of navItems">
+            <!-- <button type="button" class="btn btn-success p-2 font-weight-bold" >
+                {{navItem}}
+            </button> -->
+            <button
+                pButton
+                type="button"
+                class="p-button-dark w-100 text-left text-dark p-button-sm  p-button-text p-2 font-weight-bold"
+                label="{{navItem.name}}"
+                icon="pi {{navItem.icon}}"
+                routerLink="{{navItem.link}}"
+
+            ></button>
+        </li>
+    </ul>
+    <div style="height: 50px;" class="align-self-end bg-dark w-100 mt-auto" >
+        <button
+            pButton
+            type="button"
+            icon="pi pi-angle-double-left"
+            (click)="toggleMinimize($event)"
+            iconPos="right"
+            class="w-100"
+            
+        ></button>
+    </div>
+</div>
+

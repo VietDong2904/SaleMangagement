@@ -1,0 +1,8 @@
+<div class="form-group row mb-0">
+    <h6 [ngClass]="[gridName, 'col-form-label']">{{ fieldName }}:</h6>
+    <div [ngClass]="[gridValue, 'd-flex', 'align-items-center']">
+      <span *ngIf="!isDate">{{ value }}</span>
+      <span *ngIf="isDate">{{ value | date: "dd/mm/yyyy hh:mm" }}</span>
+    </div>
+  </div>
+  

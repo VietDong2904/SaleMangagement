@@ -1,0 +1,39 @@
+<p-sidebar
+  *ngIf="display"
+  [(visible)]="display"
+  (onHide)="onHide.emit(true)"
+  position="right"
+  [style]="{ width: '40%' }">
+
+  <div class="row mb-2">
+    <div class="col-12" [style]="{ background: '#fff' }">
+      <h4>Thông tin sản phẩm</h4>
+      <app-field-common
+      [fieldName]="'Tên sản phẩm'"
+      [value]="giao?.productName"></app-field-common>
+      <app-field-common
+      [fieldName]="'Danh mục'"
+      [value]="_nguoiNhan"></app-field-common>
+      <app-field-common
+      [fieldName]="'Giá bán'"
+      [value]="giao?.productPrice"></app-field-common>
+      <app-field-common
+      [fieldName]="'Thương hiệu'"
+      [value]="giao?.productBrand"></app-field-common>
+      <app-field-common
+      [fieldName]="'Số lượng có'"
+      [value]="giao?.productTotal"></app-field-common>
+      <app-field-common
+      [fieldName]="'Mô tả'"
+      [value]="giao?.productDescription"></app-field-common>
+      <app-field-common
+      [fieldName]="'Hình ảnh'"
+      ></app-field-common>
+      <img class="text-right" src="https://tse4.mm.bing.net/th?id=OIP.uSv8ezpEofr8-5D3BQ0_IAHaFj&pid=Api&P=0&w=229&h=172" alt="">
+      <img class="text-right" src="https://tse4.mm.bing.net/th?id=OIP.uSv8ezpEofr8-5D3BQ0_IAHaFj&pid=Api&P=0&w=229&h=172" alt="">
+    
+    </div>
+  </div>
+  <div>
+  </div>
+</p-sidebar>

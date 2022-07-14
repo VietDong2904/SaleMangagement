@@ -1,0 +1,67 @@
+<nav class="navbar border-bottom navbar-default bg-white navbar-fixed-top be-top-header">
+    <div class="container-fluid">
+        <div class="navbar-header d-flex align-items-center">
+            <a href="/" class="navbar-brand">
+                <img class="border border-dark rounded" src="../assets/img/logo.jpg" style="width:45px" alt="">
+            </a>
+            <div class="page-title">
+                <h5 class="m-0">Hệ thống quản lý bán hàng FEMI</h5>
+            </div>
+        </div>
+        <div class="be-right-navbar d-flex align-items-center">
+            <div class="mr-3">
+                <button
+                    pButton
+                    label="Xin chào, {{userName}}"
+                    class="p-button-outlined p-button-sm p-2 text-dark font-weight-bold"
+                    icon="pi pi-user"
+                    iconPos="right"
+                    (click)="openProfile()"
+                >
+                </button>
+            </div>
+            <div class="mr-3">
+                <button
+                    pButton
+                    class="p-button-outlined  w-100 text-center  p-button-sm mr-3  p-2 font-weight-bold"
+                    label="Trang mua hàng "
+                    icon="pi pi-home"
+                    iconPos="right"
+                    routerLink="/home-user"
+                ></button>
+            </div>
+            <div>
+                <button
+                    pButton
+                    class="p-button-outlined w-100 p-button-danger text-center p-button-sm  p-2 font-weight-bold"
+                    label="Đăng xuất "
+                    icon="pi pi-sign-out"
+                    iconPos="right"
+                    (click)="onLogout()"
+                ></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="app-body">
+    <app-1sidebar></app-1sidebar>
+    <main class="main">
+        <nav class="navbar border-bottom navbar-default bg-white navbar-fixed-top be-top-header">
+            <ul class="justify-content-start w-100 d-flex list-unstyled p-0 m-0">
+                
+                <button
+                    pButton
+                    type="button"
+                    class="p-button-sm  p-button-text p-2 font-weight-bold"
+                    label="Dashboard / {{name}}"
+                >
+
+                </button>
+            </ul>
+        </nav>
+        <div class="container-fluid p-0 m-0">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

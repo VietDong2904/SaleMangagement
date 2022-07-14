@@ -1,0 +1,115 @@
+<div class="p-3 animated fadeIn">
+    <div class="row">
+        <div class="col-md-3 h-100 overflow-auto">
+            <app-categories></app-categories>
+        </div>
+        <div class="col-md-9 h-100  overflow-auto">
+            
+            <div class="row mb-2">
+              <p-menubar [model]="menuItems" [style]="{ background: '#fff' }" class="col-12"></p-menubar>
+            </div>
+            <div class="row mb-2 ml=0">
+                <div>
+                  <span class="p-input-icon-left col-12 " style="margin-left: -11px;">
+                    <i class="pi pi-search col-1"></i>
+                    <input
+                      type="text"
+                      pInputText
+                      placeholder="Tìm kiếm" />
+                  </span>
+                </div>
+            
+              </div>
+            <div class="row">
+                <div class="col-12">
+                  <p-table
+                    [value]="listProducts"
+                    [paginator]="false"
+                    [autoLayout]="true"
+                    [lazy]="true"
+                    styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th class="text-center" id="STT">STT</th>
+                        <th class="text-center" id="Ten">Tên hàng hóa</th>
+                        <th class="text-center" id="Ten">Giá bán</th>
+                        <th class="text-center" id="SoTang">Số lượng có</th>
+                        <th class="text-center" id="ThaoTac">Thao tác</th>
+                      </tr>
+                      
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex" >
+                      <tr>
+                        <td class="text-center" style="width: 80px">
+                            {{ stt + rowIndex + 1 }}
+                        </td>
+                        <td class="text-truncate">
+                            {{ item.productName }}
+                        </td>
+                        <td class="text-center" style="width: 180px">
+                            {{ item.productPrice }}
+                        </td>
+                        <td class="text-center" style="width: 200px">
+                            {{ item.productTotal }}
+                        </td>
+                        <td style="width: 15rem">
+                          <div class="d-flex justify-content-between">
+                            <button
+                              pButton
+                              type="button"
+                              icon="pi pi-eye"
+                              pTooltip="Xem"
+                              tooltipPosition="bottom"
+                              (click)="productDetail(item)"
+                              class="p-button-text p-button-sm"
+                              ></button>
+                            <button
+                              pButton
+                              type="button"
+                              icon="pi pi-pencil"
+                              pTooltip="Sửa"
+                              tooltipPosition="bottom"
+                              (click)="openEdit(item)"
+                              class="p-button-text p-button-sm"></button>
+                            <button
+                              pButton
+                              type="button"
+                              icon="pi pi-trash"
+                              pTooltip="Xóa"
+                              tooltipPosition="bottom"
+                              (click)="onDelete(item.productId)"
+                              class="p-button-text p-button-danger p-button-sm"></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <ng-template  pTemplate="emptymessage" let-columns>
+                      <tr>
+                        <td colspan="12">
+                          <app-no-data></app-no-data>
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                      <div class="p-d-flex p-ai-center p-jc-between">Tổng: {{countProduct}} sản phẩm.</div>
+                    </ng-template>
+                  </p-table>
+                </div>
+            </div>
+            <div class="row mb-3" *ngIf="listProducts.length > 0">
+              <div class="col-12">
+                <p-paginator 
+                  
+                  #paginator
+                  >
+                </p-paginator>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-product-detail
+  [buuPham]="buuPhamPreviewData"
+  [displayDialog]="visiblePreview"
+  (onHide)="visiblePreview = false"></app-product-detail>

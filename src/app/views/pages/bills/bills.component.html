@@ -1,0 +1,81 @@
+<div class="p-3 animated fadeIn">
+    <div class="row mb-2">
+      <p-menubar [model]="menuItems" [style]="{ background: '#fff' }" class="col-12"></p-menubar>
+    </div>
+    <div class="row">
+        <div class="col-12">
+          <p-table
+            [paginator]="false"
+            [autoLayout]="true"
+            [lazy]="true"
+            styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines"
+            responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="text-center" id="STT">STT</th>
+                <th class="text-center" id="Ten">Thời gian lập</th>
+                <th class="text-center" id="SoTang">Khách hàng</th>
+                <th class="text-center" id="ThaoTac">Thao tác</th>
+              </tr>
+              
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-rowIndex="rowIndex" >
+              <tr>
+                <td class="text-center" style="width: 80px">
+                    {{ stt + rowIndex + 1 }}
+                </td>
+                <td class="text-truncate">
+                    {{ item.name }}
+                </td>
+                <td class="text-center" style="width: 80px">
+                    {{ item.total }}
+                </td>
+                <td style="width: 15rem">
+                  <div class="d-flex justify-content-between">
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-eye"
+                      pTooltip="Xem"
+                      tooltipPosition="bottom"
+                      class="p-button-text p-button-sm"
+                      ></button>
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-pencil"
+                      pTooltip="Sửa"
+                      tooltipPosition="bottom"
+                      class="p-button-text p-button-sm"></button>
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-clone"
+                      pTooltip="Nhân bản"
+                      tooltipPosition="bottom"
+                      class="p-button-text p-button-sm"></button>
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-trash"
+                      pTooltip="Xóa"
+                      tooltipPosition="bottom"
+                      class="p-button-text p-button-danger p-button-sm"></button>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+              <tr>
+                <td colspan="12">
+                  <app-no-data></app-no-data>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+              <div class="p-d-flex p-ai-center p-jc-between">Tổng:  hóa đơn.</div>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+</div>
